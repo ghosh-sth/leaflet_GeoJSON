@@ -8,7 +8,7 @@
 
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- <title>Map using Leaflet and GeoJSON Data</title>
+ <title>Megacity Locations</title>
 
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -43,6 +43,13 @@
         maxZoom: 15,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map); /// setting up the map. OSM base. zoomed out to show the world.
+
+    
+    fetch('MegaCities_geocoded.geojson')
+    .then(response => response.json())
+    .then(data => {
+    L.geoJSON(data).addTo(map);
+    }); /// Add city locations to the map (does not include labels)
 
 </script>
 
